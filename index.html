@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spendwise - Welcome</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="lang.js"></script>
+  <script src="controller_index.js" defer></script>
+</head>
+
+<body class="landing" onload="SpendwiseLang.applyLanguage()">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="assets/logo.jpeg" alt="Spendwise Logo" class="rounded-circle me-2" width="45" height="45">
+      <span class="fw-bold fs-4">Spendwise</span>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item me-3">
+          <select id="langSelectIndex" class="form-select form-select-sm bg-light">
+            <option value="en">🌐 EN</option>
+            <option value="es">🌐 ES</option>
+          </select>
+        </li>
+        <li class="nav-item me-2">
+          <a href="login.html" class="btn btn-light btn-sm px-3" data-i18n="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="login.html?mode=register" class="btn btn-outline-light btn-sm px-3" data-i18n="registerBtn">Register</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section position-relative">
+  <div class="hero-overlay"></div>
+  <img id="slideImage" src="assets/slider1.jpg" alt="Finance image" class="hero-img">
+  
+  <div class="hero-content">
+    <div class="container text-center text-white">
+      <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Spendwise</h1>
+      <p class="lead mb-5 fs-3 animate__animated animate__fadeInUp" data-i18n="hero_subtitle">Take Control of Your Finances</p>
+      <a href="login.html" class="btn btn-success btn-lg px-5 py-3 shadow-lg animate__animated animate__fadeInUp" data-i18n="start">
+        <i class="bi bi-rocket-takeoff me-2"></i>Get Started
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <div class="col-12">
+        <h2 class="display-5 fw-bold text-success mb-3" data-i18n ="whychoose">Why Choose Spendwise?</h2>
+        <p class="lead text-muted" data-i18n="manage_money">Manage your money with ease and confidence</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100 text-center feature-card">
+          <div class="card-body p-4">
+            <div class="feature-icon bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+              <i class="bi bi-graph-up text-success fs-1"></i>
+            </div>
+            <h4 class="fw-bold" data-i18n="feature_track_title">Track Spending</h4>
+            <p class="text-muted" data-i18n="feature_track_text">Monitor your expenses in real-time with detailed analytics</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100 text-center feature-card">
+          <div class="card-body p-4">
+            <div class="feature-icon bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+              <i class="bi bi-wallet2 text-success fs-1"></i>
+            </div>
+            <h4 class="fw-bold" data-i18n="feature_budget_title">Smart Budget</h4>
+            <p class="text-muted" data-i18n="feature_budget_text">Set budgets and receive alerts to stay on track</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100 text-center feature-card">
+          <div class="card-body p-4">
+            <div class="feature-icon bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+              <i class="bi bi-shield-check text-success fs-1"></i>
+            </div>
+            <h4 class="fw-bold" data-i18n="feature_secure_title">Secure & Safe</h4>
+            <p class="text-muted" data-i18n="feature_secure_text">Your financial data is encrypted and protected</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4 mt-5">
+  <div class="container text-center">
+    <p class="mb-0">&copy; 2025 Spendwise. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Mantener el valor seleccionado según localStorage
+  const lang = SpendwiseLang.getLang();
+  document.getElementById("langSelectIndex").value = lang;
+
+  // Cuando se cambie el idioma
+  document.getElementById("langSelectIndex").addEventListener("change", e => {
+    SpendwiseLang.setLang(e.target.value);
+  });
+</script>
+
+</body>
+</html>

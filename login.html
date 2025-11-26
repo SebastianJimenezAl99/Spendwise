@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spendwise - Login</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- ORDEN CORRECTO: functions.js → lang.js → controller_login.js -->
+  <script src="functions.js"></script>
+  <script src="lang.js"></script>
+  <script src="controller_login.js" defer></script>
+
+</head>
+
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="assets/logo.jpeg" alt="Logo" class="rounded-circle me-2" width="45" height="45">
+      <span class="fw-bold fs-4">Spendwise</span>
+    </a>
+    
+    <div class="d-flex align-items-center gap-2">
+      <select id="langSelectLogin" class="form-select form-select-sm bg-light">
+        <option value="en">🌐 EN</option>
+        <option value="es">🌐 ES</option>
+      </select>
+      <a href="index.html" class="btn btn-light btn-sm ms-2">
+        <i class="bi bi-house-door me-1" data-i18n="home"></i>Home
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+
+      <!-- LOGIN -->
+      <div class="card shadow-lg border-0" id="loginSection">
+        <div class="card-body p-5">
+          <div class="text-center mb-4">
+            <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+              <i class="bi bi-person-circle text-success fs-1"></i>
+            </div>
+            <h2 class="fw-bold text-success" data-i18n="login">Login</h2>
+            <p class="text-muted" data-i18n="welcome">Welcome back! Please login to your account</p>
+          </div>
+
+          <form id="loginForm">
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="username">Username</label>
+              <div class="input-group">
+                <span class="input-group-text bg-success bg-opacity-10 border-success border-opacity-25">
+                  <i class="bi bi-person text-success"></i>
+                </span>
+                <input id="loginUser" class="form-control border-success border-opacity-25" required data-i18n-placeholder="username">
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-semibold" data-i18n="password">Password</label>
+              <div class="input-group">
+                <span class="input-group-text bg-success bg-opacity-10 border-success border-opacity-25">
+                  <i class="bi bi-lock text-success"></i>
+                </span>
+                <input id="loginPass" type="password" class="form-control border-success border-opacity-25" required data-i18n-placeholder="password">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 py-2 fw-semibold" data-i18n="login">
+              <i class="bi bi-box-arrow-in-right me-2"></i>Login
+            </button>
+          </form>
+
+          <div class="text-center mt-4">
+            <p class="text-muted mb-2" data-i18n="donthave">Don't have an account?</p>
+            <button id="showRegisterBtn" class="btn btn-outline-success w-100" data-i18n="createAccount">
+              <i class="bi bi-person-plus me-2"></i>Create Account
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="card shadow-lg border-0 d-none" id="registerSection">
+        <div class="card-body p-5">
+          <div class="text-center mb-4">
+            <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+              <i class="bi bi-person-plus-fill text-success fs-1"></i>
+            </div>
+            <h2 class="fw-bold text-success" data-i18n="createAccount">Create Account</h2>
+            <p class="text-muted">Join Spendwise and start managing your finances</p>
+          </div>
+
+          <form id="registerForm">
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="email">Email</label>
+              <div class="input-group">
+                <span class="input-group-text bg-success bg-opacity-10 border-success border-opacity-25">
+                  <i class="bi bi-envelope text-success"></i>
+                </span>
+                <input id="regEmail" type="email" class="form-control border-success border-opacity-25" required data-i18n-placeholder="email">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold" data-i18n="password">Password</label>
+              <div class="input-group">
+                <span class="input-group-text bg-success bg-opacity-10 border-success border-opacity-25">
+                  <i class="bi bi-lock text-success"></i>
+                </span>
+                <input id="regPass" type="password" class="form-control border-success border-opacity-25" required data-i18n-placeholder="password">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold" data-i18n="firstName">First Name</label>
+                <input id="regFirst" class="form-control border-success border-opacity-25" required data-i18n-placeholder="firstName">
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold" data-i18n="lastName">Last Name</label>
+                <input id="regLast" class="form-control border-success border-opacity-25" required data-i18n-placeholder="lastName">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 py-2 fw-semibold mb-3" data-i18n="register">
+              <i class="bi bi-check-circle me-2"></i>Register
+            </button>
+          </form>
+
+          <div class="d-flex gap-2">
+            <button id="backToLoginBtn" class="btn btn-outline-success flex-fill" data-i18n="backLogin">
+              <i class="bi bi-arrow-left me-2"></i>Back to Login
+            </button>
+            <a href="index.html" class="btn btn-outline-secondary flex-fill">
+              <i class="bi bi-house-door me-1"></i>Home
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- CAMBIO MÍNIMO: ejecutar este script *después* de que lang.js esté cargado -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const langSelect = document.getElementById("langSelectLogin");
+
+    // Cargar idioma guardado
+    langSelect.value = SpendwiseLang.getLang();
+
+    langSelect.addEventListener("change", e => {
+      SpendwiseLang.setLang(e.target.value);
+    });
+  });
+</script>
+
+</body>
+</html>
